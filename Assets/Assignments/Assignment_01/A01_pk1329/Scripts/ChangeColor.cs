@@ -1,23 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-namespace pk1329.A01
+
+namespace pk1329A01
 {
-    public class Nod : MonoBehaviour
+    public class ChangeColor : MonoBehaviour
     {
-        public float speed;
-        public float maxRotation;
+        public Text myText;
+        public Color newColor;
+
         // Use this for initialization
         void Start()
         {
-
         }
 
         // Update is called once per frame
         void Update()
         {
-            transform.rotation = Quaternion.Euler(maxRotation * Mathf.Sin(Time.time * speed), 0f, 0f);
+            myText.color = newColor;
         }
     }
 }

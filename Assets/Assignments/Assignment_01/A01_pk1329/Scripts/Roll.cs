@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace pk1329.A01
+
+namespace pk1329A01
 {
-    public class Wave : MonoBehaviour
+    public class Roll : MonoBehaviour
     {
         public float speed;
-        public float maxRotation;
+        public float speed1;
+        public Vector3 direction;
         // Use this for initialization
         void Start()
         {
@@ -17,7 +19,8 @@ namespace pk1329.A01
         // Update is called once per frame
         void Update()
         {
-            transform.rotation = Quaternion.Euler(0f, 0f, maxRotation * Mathf.Sin(Time.time * speed));
+            transform.Rotate(direction * (speed * Time.deltaTime));
+            transform.position += new Vector3(speed1, 0, 0);
         }
     }
 }
