@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace A01Examples
 {
-    public class SineManager : MonoBehaviour
+    public class sineManager : MonoBehaviour
     {
         public GameObject SNAKE;
         public GameObject Ball;
         public int amount;
 
-        void Start()
+        void start()
         {
             
             //GameObject SNAKE = new GameObject();
@@ -28,7 +28,7 @@ namespace A01Examples
             }
         }
 
-        void Update()
+        void update()
         {
 
         }
