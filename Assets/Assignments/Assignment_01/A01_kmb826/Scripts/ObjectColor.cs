@@ -8,16 +8,10 @@ namespace kmb826
     {
         public float red, green, blue, alpha;
 
-        // Use this for initialization
+        // Generic script to manipulate the color of any GameObject desired
         void Start()
         {
             gameObject.GetComponent<Renderer>().material.color = new Color(red, green, blue, alpha);
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }

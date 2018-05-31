@@ -9,12 +9,6 @@ namespace kmb826
 
         public Transform ball;
 
-        // Use this for initialization
-        void Start()
-        {
-
-        }
-
         // Update is called once per frame
         void Update()
         {
