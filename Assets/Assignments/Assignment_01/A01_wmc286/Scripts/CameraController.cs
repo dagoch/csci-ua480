@@ -6,7 +6,7 @@ namespace wmc286
 {
     public class CameraController : MonoBehaviour
     {
-
+        // offset below found on Unity Roll a Ball tutorial
         public GameObject player;
         private Vector3 offset;
 
