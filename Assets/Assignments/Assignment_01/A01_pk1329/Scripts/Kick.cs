@@ -9,6 +9,7 @@ namespace pk1329.A01
     {
         public float speed;
         public float maxRotation;
+        public float offset;
         // Use this for initialization
         void Start()
         {
@@ -21,7 +22,11 @@ namespace pk1329.A01
             //Debug.Log(transform.eulerAngles);
 
             // calculate rotation for each frame
-            transform.rotation = Quaternion.Euler(maxRotation * Mathf.Sin(Time.time * speed), 0f, 0f);
+            // Quaternion mathematical construct to represent a rotation.
+            // you can't assign anything to rotation unless with Quaternion
+
+            transform.rotation = Quaternion.Euler(offset + (maxRotation * Mathf.Sin(Time.time * speed)), 0f, 0f);
+                
         }
     }
 }

@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace pk1329.A01
 {
-    public class RotateHead : MonoBehaviour
+    public class Nod : MonoBehaviour
     {
-        public GameObject target;
         public float speed;
+        public float maxRotation;
         // Use this for initialization
         void Start()
         {
@@ -17,7 +17,7 @@ namespace pk1329.A01
         // Update is called once per frame
         void Update()
         {
-            transform.RotateAround(target.transform.position, target.transform.forward, speed * Time.deltaTime);
+            transform.rotation = Quaternion.Euler(maxRotation * Mathf.Sin(Time.time * speed), 0f, 0f);
         }
     }
 }
