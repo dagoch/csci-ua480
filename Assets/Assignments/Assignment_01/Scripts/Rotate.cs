@@ -21,5 +21,6 @@ public class Rotate : MonoBehaviour {
 
         // calculate rotation for each frame
         transform.Rotate(Vector3.up * Time.deltaTime * speed);
+        transform.Rotate(Vector3.left * Time.deltaTime * speed);
 	}
 }
