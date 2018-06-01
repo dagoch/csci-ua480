@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace A01Examples
 {
-    public class SnakeTrail : MonoBehaviour
+    public class snakeTrail : MonoBehaviour
     {
 
         List<Vector3> PreviousPositions;
@@ -15,7 +15,7 @@ namespace A01Examples
 
 
         // Use this for initialization
-        void Start()
+        void start()
         {
 
             PreviousPositions = new List<Vector3>();
@@ -30,7 +30,7 @@ namespace A01Examples
 
         }
 
-        void Update()
+        void update()
         {
 
             PreviousPositions.Add(this.transform.position);

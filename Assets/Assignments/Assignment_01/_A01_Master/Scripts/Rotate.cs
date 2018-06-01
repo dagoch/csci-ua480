@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace A01Examples
+namespace A01zs967
 {
-    public class Rotate : MonoBehaviour
+    public class rotate : MonoBehaviour
     {
 
         // properties
@@ -13,13 +13,13 @@ namespace A01Examples
         public float speed = 10.0f;
 
         // Use this for initialization
-        void Start()
+        void start()
         {
 
         }
 
         // Update is called once per frame
-        void Update()
+        void update()
         {
 
             //Debug.Log(transform.eulerAngles);
