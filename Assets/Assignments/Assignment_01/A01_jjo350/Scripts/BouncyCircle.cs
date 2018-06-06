@@ -22,12 +22,6 @@ namespace A1_jjo350 {
             }
 
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 
 }
