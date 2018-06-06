@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Assignments/Assignment_02/_A02_Master/Scenes/ComplexOrbit.unity
+    guid: 377a432a438b94350b18026448e8c7c8
   m_configObjects: {}
