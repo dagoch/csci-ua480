@@ -2,23 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace A02jjo350 {
+namespace A02_jjo350 {
     public class CameraController : MonoBehaviour
     {
-        void Start() {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+
         public float xSens = 5.0f;
         public float ySens = 5.0f;
         public float movementSpeed = 10.0f;
+        public float jumpForce = 100.0f;
 
         private float mouseX;
         private float mouseY;
+        private bool jumping;
+        private bool jump;
+        private Rigidbody rb;
 
+        void Start() {
+            Cursor.lockState = CursorLockMode.Locked;
+            rb = this.GetComponent<Rigidbody>();
+        }
 
         // Update is called once per frame
         void Update() {
-
+            
             /*
              * I had 99% of this before, but I didn't think to maintain the mouseX/Y as 
              * private variables.
@@ -36,9 +42,32 @@ namespace A02jjo350 {
 
             float moveX = Input.GetAxis("Horizontal");
             float moveZ = Input.GetAxis("Vertical");
+
+            if (Input.GetButtonDown("Jump") && !jumping)
+            {
+                Debug.Log("jump");
+                jump = true;
+            }
+
             Vector3 deltaMove = new Vector3(moveX, 0, moveZ) * Time.deltaTime * movementSpeed;
-            deltaMove = transform.rotation * deltaMove;
+            Quaternion moveDir = Quaternion.Euler(0, mouseX, 0);
+            deltaMove = moveDir * deltaMove;
             transform.position = transform.position + deltaMove;
+        }
+
+        private void FixedUpdate()
+        {
+            if (jump) {
+                Debug.Log("jumping");
+                jump = false;
+                rb.AddForce(new Vector3(0, jumpForce, 0));
+            }
+
+            if (transform.position.y < 1.0) {
+                jumping = false;
+            } else {
+                jumping = true;
+            }
         }
     }
 
