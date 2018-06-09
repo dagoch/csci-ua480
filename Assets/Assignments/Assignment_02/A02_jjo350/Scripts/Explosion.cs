@@ -7,12 +7,12 @@ namespace A02_jjo350 {
     {
         public float radius = 5.0f;
         public float force = 500.0f;
-        public ParticleSystem particleSystem;
-        private bool inside = false;
+        public ParticleSystem particles;
+		public GameObject instruct;
+		private bool inside;
 
-        private bool rendering = false;
+        private bool rendering;
         private void OnBecameVisible() {
-            Debug.Log("visible");
             rendering = true;
         }
 
@@ -22,21 +22,27 @@ namespace A02_jjo350 {
         }
 
         private void Update()
-        {
-            if (inside && rendering && Input.GetKeyDown(KeyCode.B)) {
-                this.Explode();
-                Debug.Log("hello");
-            }
+		{
+            if (inside && rendering) {
+				instruct.SetActive(true);
+				if (Input.GetKeyDown(KeyCode.B)) {
+					this.Explode();
+					instruct.SetActive(false);
+				}
+			} else {
+				instruct.SetActive(false);
+			}
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            inside = (other.tag == "Player");
+			inside |= (other.tag == "Player");
+
         }
 
         private void OnTriggerExit(Collider other)
         {
-            inside = (other.tag == "Player");
+			inside &= (other.tag != "Player");
         }
 
         /*
@@ -46,7 +52,7 @@ namespace A02_jjo350 {
          */
         private void Explode() {
             Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
-            ParticleSystem particles = Instantiate(particleSystem, transform.position, Quaternion.identity);
+            ParticleSystem particle = Instantiate(particles, transform.position, Quaternion.identity);
             foreach (Collider col in colliders) {
                 Rigidbody rb = col.GetComponent<Rigidbody>();
 
@@ -59,7 +65,7 @@ namespace A02_jjo350 {
 
                 }
             }
-            Destroy(particles, 3.0f);
+            Destroy(particle, 3.0f);
             Destroy(gameObject);
         }
 
