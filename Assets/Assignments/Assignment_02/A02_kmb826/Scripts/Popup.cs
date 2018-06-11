@@ -16,6 +16,8 @@ namespace kmb826_assignment02
         public GameObject truck; // vehicle that we want distance between the object
         private MeshRenderer text_mesh; // Renderer for text
 
+        private bool dog_found = false;
+
         private void Start()
         {
             text_mesh = gameObject.GetComponent<MeshRenderer>();
@@ -26,6 +28,11 @@ namespace kmb826_assignment02
 
             if (distance < desired_distance)
             {
+                if (obj == GameObject.FindGameObjectWithTag("dog") && !dog_found)
+                {
+                    GameScore.AddScore(50);
+                    dog_found = true;
+                }
                 //If less than specified desired distance create popup
                 text_mesh.enabled = true;
             }

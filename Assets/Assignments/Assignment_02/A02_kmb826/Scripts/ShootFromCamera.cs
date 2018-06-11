@@ -11,8 +11,9 @@ namespace kmb826_assignment02
         VectorDirection vector_direction = new VectorDirection();
         private GameObject empty_object;
         public Rigidbody projectile;
+        GameScore score;
 
-        private float pwr = 100f;
+        private readonly float pwr = 100f;
 
         private void Start()
         {
@@ -41,17 +42,18 @@ namespace kmb826_assignment02
                     {
                         Debug.Log("Ball spotted!");
                         Destroy(shot.transform.gameObject);
-                    }
+                        GameScore.AddScore(5);
+                        }
 
                 }
 
             }
         }
 
+        // Using this method to get direction of where shot needs to go
         IEnumerator GetVectorDirection()
         {
             empty_object.transform.forward = vector_direction.Direction(mouse_coord, 1.3f);
-            //transform.localEulerAngles = empty_object.transform.eulerAngles;
             yield return empty_object;
         }
     }

@@ -8,7 +8,6 @@ namespace kmb826_assignment02
     {
         private readonly float speed = 5.0f;
         private readonly float pwr = 3.0f;
-        public static bool is_driving = false;
 
         private void Start()
         {
@@ -22,28 +21,28 @@ namespace kmb826_assignment02
             if (Input.GetKey(KeyCode.A))
             {
                 transform.Rotate(Vector3.up * -speed);
-                is_driving = true;
+                //is_driving = true;
             }
 
             //Turn vehicle to the right by pressing 'D' key
             if (Input.GetKey(KeyCode.D))
             {
                 transform.Rotate(Vector3.up * speed);
-                is_driving = true;
+                //is_driving = true;
             }
 
             //Drive vehicle forward by pressing 'W' key
             if (Input.GetKey(KeyCode.W))
             {
                 transform.Translate(transform.InverseTransformDirection(-transform.forward));
-                is_driving = true;
+                //is_driving = true;
             }
 
             //Drive vehicle in reverse by pressing 'S' key
             if (Input.GetKey(KeyCode.S))
             {
                 transform.Translate(transform.InverseTransformDirection(transform.forward));
-                is_driving = true;
+                //is_driving = true;
             }
             
         }

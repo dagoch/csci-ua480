@@ -21,6 +21,7 @@ namespace kmb826_assignment02
                 Destroy(this.gameObject); //Destroy this object the create "Explosion" in same position
                 for (int i = 0; i < 300; i++)
                     Instantiate(cube, pos, Quaternion.Euler(Mathf.Sin(Time.time), Mathf.Sin(Time.time), Mathf.Sin(Time.time)));
+                GameScore.AddScore(50); // 50 pts for discovering the explosive cube
             }
         }
     }

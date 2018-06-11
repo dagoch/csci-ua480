@@ -28,18 +28,20 @@ namespace kmb826_assignment02
                 {
                     Rigidbody newBall = Instantiate(ball); // Instantiate new ball
                     ball_count++;
+                    Debug.Log("Ball Count: " + ball_count);
                     newBall.AddExplosionForce(200f, Vector3.forward, 500f); // Add force to help the ball bounce
                     collisionDetected = false; // reset collision boolean to false
                     count = 0; // reset count to zero
                 }
 
+                // Simply to help manage the number of balls in the playing area, whenever the number hits 200, 50 will be destroyed
                 if (ball_count > 200)
                 {
-                    GameObject[] obj_array = obj_array = GameObject.FindGameObjectsWithTag("ball");
+                    GameObject[] obj_array = obj_array = GameObject.FindGameObjectsWithTag("ball"); // Make and array of ball gameObjects
                     for (int i = 0; i < 50; i++)
                     {
-                        Destroy(obj_array[i]);
-                        ball_count--;
+                        Destroy(obj_array[i]); // iterate through and destroy
+                        ball_count--; // decrement count varable
                         Debug.Log("Ball Count: " + ball_count);
                     }
                 }

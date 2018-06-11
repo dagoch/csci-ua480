@@ -26,8 +26,8 @@ namespace kmb826_assignment02
             // If projectile hits a ball, then it destroys the ball
             if (collision.gameObject.tag == "ball")
             {
-                //Debug.Log("Projectile Hit!");
                 Destroy(collision.transform.gameObject);
+                GameScore.AddScore(5);
             }
         }
     }

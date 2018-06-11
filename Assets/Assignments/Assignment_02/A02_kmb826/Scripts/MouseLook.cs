@@ -19,13 +19,14 @@ namespace kmb826_assignment02
 
         private void Update()
         {
-            mouse_coord = new Vector3(Input.mousePosition.x - (Screen.width/2f), Input.mousePosition.y - (Screen.height / 2f), 0f);
+            mouse_coord = new Vector3(Input.mousePosition.x - (Screen.width/2f), Input.mousePosition.y - (Screen.height / 2f), 0f); // Find correct mouse X and Y positions, and set to mouse coordinates
             if(!ready)
             {
                 StartCoroutine("GetVectorDirection");
             }
         }
 
+        // Get the direction of the mouse inputs x and y
         IEnumerator GetVectorDirection()
         {
             ready = true;
