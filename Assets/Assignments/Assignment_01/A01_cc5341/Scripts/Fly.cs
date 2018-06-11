@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
 
+=======
+>>>>>>> e9caa95ec2510d80f2ad3f48fd1ede1179f85592
 namespace A01_cc5341
 {
     public class Fly : MonoBehaviour
