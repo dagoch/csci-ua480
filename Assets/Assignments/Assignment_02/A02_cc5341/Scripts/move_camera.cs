@@ -2,15 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class move_camera : MonoBehaviour {
+namespace A02_cc5341
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public class move_camera : MonoBehaviour
+    {
+        float X = 0f;
+        float Y = 45f;
+
+        void Start()
+        {
+
+        }
+
+        void Update()
+        {
+            X += 2 * Input.GetAxis("Mouse X");
+            Y -= 2 * Input.GetAxis("Mouse Y");
+
+            transform.eulerAngles = new Vector3(Y, X, 0.0f);
+        }
+    }
 }
