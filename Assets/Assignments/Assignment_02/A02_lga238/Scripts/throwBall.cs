@@ -5,7 +5,7 @@ using UnityEngine;
 namespace lga238 {
 	public class throwBall : MonoBehaviour {
 
-		public float Fforce = 500.0f;
+		public float force = 150.0f;
 		Rigidbody ball;
 		Rigidbody clone;
 
@@ -17,8 +17,8 @@ namespace lga238 {
 		// Update is called once per frame
 		void FixedUpdate () {
 			if(Input.GetButtonDown("Fire1")){
-				ball.AddForce(-Vector3.forward * Fforce);
-				ball.AddForce(Vector3.up * 350.0f);
+				ball.AddForce(-Vector3.forward * force);
+				ball.AddForce(Vector3.up * 100.0f);
 			}
 			if(Input.GetButtonDown("Fire2")){
 				clone = Instantiate(ball, transform.position, transform.rotation);
