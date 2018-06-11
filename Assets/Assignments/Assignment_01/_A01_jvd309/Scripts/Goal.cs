@@ -2,31 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal : MonoBehaviour
+namespace jvd309
 {
-    public GameObject goal; 
-    public Vector3 currentPos;
-
-    // Use this for initialization
-    void Start()
+    public class Goal : MonoBehaviour
     {
-        goal = GameObject.FindWithTag("Goal");
-    }
+        public GameObject goal;
+        public Vector3 currentPos;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Goal"))
+        // Use this for initialization
+        void Start()
         {
-            transform.position = new Vector3(10, 1, 0);
-            currentPos = goal.transform.position;
-            currentPos.x -= 10;
-            goal.transform.position = currentPos;
+            goal = GameObject.FindWithTag("Goal");
+        }
+
+        // Update is called once per frame
+        void FixedUpdate()
+        {
+
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.CompareTag("Goal"))
+            {
+                transform.position = new Vector3(10, 1, 0);
+                currentPos = goal.transform.position;
+                currentPos.x -= 10;
+                goal.transform.position = currentPos;
+            }
         }
     }
 }

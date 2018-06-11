@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace A01Examples
+namespace jvd309
 {
     public class FirstPersonMove : MonoBehaviour
     {

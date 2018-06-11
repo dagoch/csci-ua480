@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class moveFloor : MonoBehaviour
+namespace jvd309
 {
-    public float speed;
-    private Rigidbody rb;
-
-    // Use this for initialization
-    void Start()
+    public class moveFloor : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody>();
-    
-        //rb.detectCollisions = false;
-    }
+        public float speed;
+        private Rigidbody rb;
 
-    // Update is called once per frame
-    void Update()
-    {
-        rb.MovePosition(transform.position + transform.up * speed);
-       
+        // Use this for initialization
+        void Start()
+        {
+            rb = GetComponent<Rigidbody>();
 
+            //rb.detectCollisions = false;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            rb.MovePosition(transform.position + transform.up * speed);
+
+
+        }
     }
 }

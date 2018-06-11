@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace A02Examples
+namespace jvd309
 {
     [ExecuteInEditMode]
     public class Raycast : MonoBehaviour

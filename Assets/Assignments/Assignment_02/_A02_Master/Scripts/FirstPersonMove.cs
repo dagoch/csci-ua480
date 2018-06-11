@@ -23,7 +23,7 @@ namespace A01Examples
             //position.x += moveX;
             //position.z += moveZ;
 
-            transform.Translate(0, moveZ, moveX);
+            transform.Translate(moveX, 0, moveZ);
         }
     }
 }

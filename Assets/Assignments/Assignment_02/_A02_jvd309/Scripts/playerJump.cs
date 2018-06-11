@@ -2,35 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerJump : MonoBehaviour
+
+namespace jvd309
 {
-    Rigidbody rb;
-    public bool isGrounded;
-    public float jumpHeight;
-
-    // Use this for initialization
-    void Start()
+    public class playerJump : MonoBehaviour
     {
-        rb = GetComponent<Rigidbody>();
-        isGrounded = true;
-    }
+        Rigidbody rb;
+        public bool isGrounded;
+        public float jumpHeight;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-
-        if (Input.GetKey(KeyCode.Space) && isGrounded == true) //if space bar is pressed (jump)
+        // Use this for initialization
+        void Start()
         {
-            rb.AddForce(0, jumpHeight, 0);
-            isGrounded = false;
-            //transform.Translate(0, 0, 2); //move forward
+            rb = GetComponent<Rigidbody>();
+            isGrounded = true;
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        isGrounded = true;
+        // Update is called once per frame
+        void Update()
+        {
 
+
+            if (Input.GetKey(KeyCode.Space) && isGrounded == true) //if space bar is pressed (jump)
+            {
+                rb.AddForce(0, jumpHeight, 0);
+                isGrounded = false;
+                //transform.Translate(0, 0, 2); //move forward
+            }
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            isGrounded = true;
+
+        }
     }
 }
