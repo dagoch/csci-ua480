@@ -12,10 +12,12 @@ public class automove : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
        
-        Vector3 movement = new Vector3(0, 0.0f, speed);
+        //Vector3 movement = new Vector3(speed, 0, 0);
 
-        rb.AddRelativeForce(movement);
+        rb.velocity = new Vector3(speed, rb.velocity.y, rb.velocity.z);
+
+
 	}
 }
