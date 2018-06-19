@@ -9,6 +9,8 @@ namespace A03Examples
     {
         Rigidbody myRb;
         public Color selectColor = Color.red;
+        public float popTime = 2.0f;
+
         Color initialColor;
         float counter = 0;
         MeshRenderer meshRenderer;
@@ -31,7 +33,7 @@ namespace A03Examples
 		
 		IEnumerator Gaze(){
             counter = 0;
-            while (counter < 1)
+            while (counter < popTime)
             {
                 Debug.Log("hi");
                 counter += Time.deltaTime;
