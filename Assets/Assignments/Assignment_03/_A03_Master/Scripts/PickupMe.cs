@@ -13,6 +13,7 @@ namespace A03Examples
         public bool grabbed = false;  // have i been picked up, or not?
         Rigidbody myRb;
         StrobeSelected strobe;
+        public DrawDownPointer downPointer;
 
         // Use this for initialization
         void Start()
@@ -24,7 +25,9 @@ namespace A03Examples
         // Update is called once per frame
         void Update()
         {
-
+            if (grabbed) {
+                downPointer.DrawLine(transform.position);
+            }
         }
 
         /*
@@ -40,6 +43,7 @@ namespace A03Examples
                 grabbed = false;
                 myRb.isKinematic = false;  //    .useGravity = true;
                 strobe.trigger = false;
+                downPointer.DontDraw();
             }
             else
             {   // pick it up:
@@ -48,6 +52,7 @@ namespace A03Examples
                 grabbed = true;
                 strobe.trigger = true;   // turn on color strobe so we know we have it
                 myRb.isKinematic = true; //  .useGravity = false;
+
             }
         }
     }
