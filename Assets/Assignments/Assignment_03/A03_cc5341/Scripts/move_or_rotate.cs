@@ -10,7 +10,6 @@ namespace A03_cc5341
     public class move_or_rotate : MonoBehaviour
     {
 
-
         public static move_or_rotate Instance;
 
         [HideInInspector]
@@ -22,6 +21,7 @@ namespace A03_cc5341
 
         private void Awake()
         {
+            
             if (Instance == null)
             {
                 Instance = this;
@@ -34,6 +34,7 @@ namespace A03_cc5341
 
         private void Start()
         {
+
             Hide();
             Vector3 dis = Camera.main.transform.position - transform.position;
             _distanceToCamera = Vector3.Project(dis, Camera.main.transform.forward).magnitude;
@@ -44,7 +45,7 @@ namespace A03_cc5341
         {
             
             if(rotating){
-                print(Camera.main.transform.eulerAngles.x);
+                
                 ballRB.transform.Rotate(new Vector3(Camera.main.transform.eulerAngles.x, Camera.main.transform.eulerAngles.y, Camera.main.transform.eulerAngles.z));
             }
         }
@@ -55,6 +56,7 @@ namespace A03_cc5341
         {
             for (int i = 0; i < transform.childCount; i++)
             {
+               
                 transform.GetChild(i).gameObject.SetActive(isActive);
             }
         }
@@ -78,6 +80,7 @@ namespace A03_cc5341
 
         public void Hide()
         {
+            
             ball = null;
             SetChildrenActive(false);
             _isShowing = false;
@@ -86,8 +89,8 @@ namespace A03_cc5341
         Rigidbody ballRB;
         public void select_move()
         {
-            print("move");
-
+           
+            print("move by camera");
 
             ballRB.isKinematic = true;
             ballRB.transform.parent = Camera.main.transform;
