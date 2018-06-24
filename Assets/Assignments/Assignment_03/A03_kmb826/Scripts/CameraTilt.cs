@@ -10,7 +10,7 @@ namespace kmb826_assignment3
 {
     public class CameraTilt : MonoBehaviour
     {
-        private static readonly float tiltMax = 7f; // maximum desired angle of head tilt
+        private static readonly float tiltMax = 10f; // maximum desired angle of head tilt
         private static readonly float threshold_magnitude = Mathf.Sin(tiltMax * Mathf.Deg2Rad); // create a threshold to compare the new position magnitude to
 
 

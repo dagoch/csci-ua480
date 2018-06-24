@@ -10,7 +10,7 @@ namespace kmb826_assignment3
 {
     public class MoveObject : MonoBehaviour
     {
-        public float speed = 15.0f; // Speed property to move cube
+        public float speed = 5.0f; // Speed property to move cube
 
         // Methods to be accessed as Singleton
         public static MoveObject Singleton;
