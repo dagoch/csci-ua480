@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 namespace A04Examples
 {
     [RequireComponent(typeof(Collider))]
-    public class MovingDestination : MonoBehaviour, IPointerClickHandler
+    public class MovingDestination : MonoBehaviour, IPointerClickHandler, IGvrPointerHoverHandler
     {
         [Tooltip("How long does the player need to get here")]
         public float RequiredMovingTime;
@@ -18,11 +18,19 @@ namespace A04Examples
             _collider = GetComponent<Collider>();
 		}
 
-		void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+        void IGvrPointerHoverHandler.OnGvrPointerHover(PointerEventData eventData)
         {
-            PlayerController.Instance.MoveToPosition(transform.position, RequiredMovingTime);
+            Debug.Log(eventData.pointerPressRaycast);
         }
 
+
+        
+		void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+        {   
+
+            PlayerController.Instance.MoveToPosition(transform.position, RequiredMovingTime);
+        }
+        
 		private void OnTriggerEnter(Collider other)
 		{
             //Disable the collision detection on this collider when the camera is inside of it, so the casting ray won't be blocked by it.
