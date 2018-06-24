@@ -21,7 +21,6 @@ namespace kmb826_assignment3
             pos.y = 0f; // keep a constant y
             if (pos.magnitude > threshold_magnitude && PickUpObject.move)
             {
-                pos.x = 0f; // only allow forward and backward movement of object
                 MoveObject.Singleton.Move(pos * 10f); //move the object
             }
             else if (pos.magnitude > threshold_magnitude && PickUpObject.rotate)

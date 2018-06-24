@@ -45,7 +45,7 @@ namespace kmb826_assignment3
         {
             // if "Move" button has been selected we will move object using head tilt
             if (PickUpObject.move)
-                transform.Translate(position*speed);
+                transform.Translate(transform.InverseTransformDirection(position*speed));
 
         }
     }
