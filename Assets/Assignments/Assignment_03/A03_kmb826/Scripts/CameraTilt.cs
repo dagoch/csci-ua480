@@ -10,9 +10,7 @@ namespace kmb826_assignment3
 {
     public class CameraTilt : MonoBehaviour
     {
-        public float speed = 0.02f; // Speed to move object with head tilt
-
-        private static readonly float tiltMax = 10f; // maximum desired angle of head tilt
+        private static readonly float tiltMax = 7f; // maximum desired angle of head tilt
         private static readonly float threshold_magnitude = Mathf.Sin(tiltMax * Mathf.Deg2Rad); // create a threshold to compare the new position magnitude to
 
 
@@ -22,9 +20,12 @@ namespace kmb826_assignment3
             Vector3 pos = transform.up; // position of head tilt
             pos.y = 0f; // keep a constant y
             if (pos.magnitude > threshold_magnitude && PickUpObject.move)
-                MoveObject.Singleton.Move(pos * speed); //move the object
+            {
+                pos.x = 0f; // only allow forward and backward movement of object
+                MoveObject.Singleton.Move(pos * 10f); //move the object
+            }
             else if (pos.magnitude > threshold_magnitude && PickUpObject.rotate)
-                RotateObject.Singleton.Rotate(pos);
+                RotateObject.Singleton.Rotate(pos); // rotate the object
         }
     }
 }

@@ -10,6 +10,8 @@ namespace kmb826_assignment3
 {
     public class MoveObject : MonoBehaviour
     {
+        public float speed = 15.0f; // Speed property to move cube
+
         // Methods to be accessed as Singleton
         public static MoveObject Singleton;
 
@@ -43,7 +45,7 @@ namespace kmb826_assignment3
         {
             // if "Move" button has been selected we will move object using head tilt
             if (PickUpObject.move)
-                transform.Translate(position);
+                transform.Translate(position*speed);
 
         }
     }
