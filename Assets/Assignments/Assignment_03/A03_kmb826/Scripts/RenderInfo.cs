@@ -16,6 +16,7 @@ namespace kmb826_assignment3
         // Set the text rendering on the canvas to not show
         void Start()
         {
+            // This loop is intended to iterate through all of the children of the canvas and set the active property to false
             for (int i = 0; i < transform.childCount; i++)
             {
                 transform.GetChild(i).gameObject.SetActive(false);
@@ -27,7 +28,7 @@ namespace kmb826_assignment3
         {
             distance = Vector3.Distance(cube.transform.position, player.transform.position); // Variable to keep track of distance between the cube and the player/camera
             
-            // If "Move" button selected, show text to display the distance between cube and player/camera
+            // If "Move" button selected, show text to display the distance between cube and player/camera to prove that cube is in fact get nearer or further away
             if(PickUpObject.move)
             {
                 for (int i = 0; i < transform.childCount; i++)

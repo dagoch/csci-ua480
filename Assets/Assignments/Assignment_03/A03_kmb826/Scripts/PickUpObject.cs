@@ -5,7 +5,7 @@ using UnityEngine;
 namespace kmb826_assignment3 {
     public class PickUpObject : MonoBehaviour
     {
-        Rigidbody rb;
+        Rigidbody rb; // cube that will be the focus of this program
         [HideInInspector]
         public static bool selected = false; // for purpose of picking up object
         [HideInInspector]
@@ -47,7 +47,7 @@ namespace kmb826_assignment3 {
             }
             else
             {
-                // for menu popup
+                // If the cube is selected, the next click will be to activate the menu to pop up for the user to decided what to do with the cube 
                 if (!second_click)
                 {
                     second_click = true;
