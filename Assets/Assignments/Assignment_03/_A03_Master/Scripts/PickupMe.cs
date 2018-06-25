@@ -26,7 +26,6 @@ namespace A03Examples
         void Update()
         {
             if (grabbed && downPointer != null) {
-                Debug.Log("hello:");
                 downPointer.DrawLine(transform.position);
             }
         }
