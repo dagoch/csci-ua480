@@ -25,9 +25,9 @@ namespace A03Examples
         // Update is called once per frame
         void Update()
         {
-            if (grabbed) {
+            if (grabbed && downPointer != null) {
                 Debug.Log("hello:");
-                //downPointer.DrawLine(transform.position);
+                downPointer.DrawLine(transform.position);
             }
         }
 
