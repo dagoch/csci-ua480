@@ -4,6 +4,10 @@
 /[Bb]uild/
 /[Bb]uilds/
 /Assets/AssetStoreTools*
+/Assets/ThirdParty/
+Assets/ThirdParty.*
+/[Pp]rojectSettings/ProjectSettings.asset
+/[Pp]rojectSettings/EditorBuildSettings.asset
 
 # Visual Studio 2015 cache directory
 /.vs/
