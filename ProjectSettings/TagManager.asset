@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Playing Area
+  - ball
+  - wall
+  - dog
+  - start
+  - Plane
+  - cube
   layers:
   - Default
   - TransparentFX
