@@ -20,11 +20,8 @@ namespace jvd309
         float counter = 0;
         MeshRenderer meshRenderer;
         IEnumerator coroutine;
-<<<<<<< HEAD
         PickupMe PickupMe;
         rotateMe RotateMe;
-=======
->>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
 
         bool gazeIn = false; // Set on gaze enter, clear on gaze exit
 
@@ -32,12 +29,7 @@ namespace jvd309
         {
             meshRenderer = GetComponent<MeshRenderer>();
             initialColor = meshRenderer.material.color;
-<<<<<<< HEAD
             myRb = GetComponent<Rigidbody>();
-=======
-            myRb = GetComponent<Rigidbody>();
-
->>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
         }
 
 
@@ -46,17 +38,12 @@ namespace jvd309
             if (gazeIn)
             {
                 // fade color towards selectColor until popTime has elapsed
-<<<<<<< HEAD
-=======
 
-                Debug.Log("hi");
->>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
                 counter += Time.deltaTime;
                 meshRenderer.material.color = Color.Lerp(initialColor, selectColor, counter / popTime);
 
                 if (counter > popTime)
-<<<<<<< HEAD
-                {                  
+                {
                     // Start pickup script
                     //Debug.Log("Pickup");
 
@@ -70,44 +57,32 @@ namespace jvd309
                     PickupMe.grabbed = false;
                     PickupMe.PickupOrDrop();
                     Reset();
-=======
-                {                  // Then pop cube.
-                    myRb.AddForce(Vector3.up * 300 + Random.insideUnitSphere * .25f);
-                    myRb.AddTorque(Random.insideUnitSphere * 10);
-                    Reset();
 
->>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
+
                 }
             }
         }
+            /***
+            * GazeAndPop
+            * triggered when gaze intersects with collider
+            * **/
+            public void GazeAndPop()
+            {
+                counter = 0;
+                gazeIn = true;
+            }
 
-        /***
-        * GazeAndPop
-        * triggered when gaze intersects with collider
-        * **/
-        public void GazeAndPop()
-        {
-<<<<<<< HEAD
-
-            counter = 0;
-            gazeIn = true;
+            /***
+            * Reset
+            * Called when gaze stops intersecting collider
+            * Resets color and stops timer coroutine
+            * **/
+            public void Reset()
+            {
+                meshRenderer.material.color = initialColor;
+                counter = 0;
+                gazeIn = false;
+            }
         }
-=======
-            counter = 0;
-            gazeIn = true;
-        }
->>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
+    }
 
-        /***
-        * Reset
-        * Called when gaze stops intersecting collider
-        * Resets color and stops timer coroutine
-        * **/
-		public void Reset()
-		{
-            meshRenderer.material.color = initialColor;
-            counter = 0;
-            gazeIn = false;
-		}
-	}
-}

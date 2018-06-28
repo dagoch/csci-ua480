@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,42 +14,21 @@ namespace jvd309
         Rigidbody myRb;
         StrobeSelected strobe;
         public DrawDownPointer downPointer;
-=======
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace jvd309
-{
-    /***
-     * PickupMe component allows user to select this object and 
-     * move it with their gaze
-     ******/
-    public class PickupMe : MonoBehaviour
-    {
-        public bool grabbed = false;  // have i been picked up, or not?
-        Rigidbody myRb;
-        StrobeSelected strobe;
-        public DrawDownPointer downPointer;
->>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
 
         // Use this for initialization
         void Start()
         {
-<<<<<<< HEAD
+
             myRb = GetComponent<Rigidbody>();
             strobe = GetComponent<StrobeSelected>();
 
-=======
-            myRb = GetComponent<Rigidbody>();
-            strobe = GetComponent<StrobeSelected>();
->>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
         }
 
         // Update is called once per frame
         void Update()
         {
-<<<<<<< HEAD
+
             if (transform.parent != null && transform.parent.position.y < 1.587) //value that intercepts plane
             {
                 Vector3 cur_pos = transform.position;
@@ -68,28 +46,18 @@ namespace jvd309
             }
         }
 
-        /*
-         * PickupOrDrop
-         * Handle the event when the user clicks the button while 
-         * gaze is on this object.  Toggle grabbed state.
-=======
-            if (grabbed && (downPointer != null)) {
-                downPointer.DrawLine(transform.position);
-            }
-        }
 
         /*
          * PickupOrDrop
          * Handle the event when the user clicks the button while 
          * gaze is on this object.  Toggle grabbed state.
->>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
+
          */
         public void PickupOrDrop()
         {
             if (grabbed)
             {  // now drop it
                 transform.parent = null;  // release the object
-<<<<<<< HEAD
                 grabbed = false;
                 myRb.isKinematic = false;  //    .useGravity = true;
                 strobe.trigger = false;
@@ -110,23 +78,5 @@ namespace jvd309
         }
     }
 }
-=======
-                grabbed = false;
-                myRb.isKinematic = false;  //    .useGravity = true;
-                strobe.trigger = false;
-                if (downPointer != null)
-                    downPointer.DontDraw();
-            }
-            else
-            {   // pick it up:
-                // make it move with gaze, keeping same distance from camera
-                transform.parent = Camera.main.transform;  // attach object to camera
-                grabbed = true;
-                strobe.trigger = true;   // turn on color strobe so we know we have it
-                myRb.isKinematic = true; //  .useGravity = false;
-
-            }
-        }
-    }
-}
->>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
+                
+ 
