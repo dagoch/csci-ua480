@@ -128,9 +128,9 @@ GameObject:
   - component: {fileID: 393062820}
   - component: {fileID: 393062822}
   - component: {fileID: 393062823}
-  - component: {fileID: 393062824}
   - component: {fileID: 393062819}
   - component: {fileID: 393062821}
+  - component: {fileID: 393062824}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -345,12 +345,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 393062813}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bacbe8047e11a4f8a9b725a33d432bac, type: 3}
+  m_Script: {fileID: 11500000, guid: efd041d28d03741d9b5329b395d23221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   grabbed: 0
   downPointer: {fileID: 0}
-  rot_speed: 30
+  rot_speed: 10
 --- !u!1 &424750121
 GameObject:
   m_ObjectHideFlags: 0
