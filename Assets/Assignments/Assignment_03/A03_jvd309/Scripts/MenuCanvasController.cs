@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace jvd309
+namespace A03Examples
 {
     [RequireComponent(typeof(Canvas))]
     public class MenuCanvasController : MonoBehaviour
