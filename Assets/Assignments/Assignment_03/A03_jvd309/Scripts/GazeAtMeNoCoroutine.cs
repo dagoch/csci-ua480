@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace A03Examples
+namespace jvd309
 {
     /***
     * GazeAtMeNoCoroutine
@@ -20,6 +20,11 @@ namespace A03Examples
         float counter = 0;
         MeshRenderer meshRenderer;
         IEnumerator coroutine;
+<<<<<<< HEAD
+        PickupMe PickupMe;
+        rotateMe RotateMe;
+=======
+>>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
 
         bool gazeIn = false; // Set on gaze enter, clear on gaze exit
 
@@ -27,8 +32,12 @@ namespace A03Examples
         {
             meshRenderer = GetComponent<MeshRenderer>();
             initialColor = meshRenderer.material.color;
+<<<<<<< HEAD
+            myRb = GetComponent<Rigidbody>();
+=======
             myRb = GetComponent<Rigidbody>();
 
+>>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
         }
 
 
@@ -37,17 +46,37 @@ namespace A03Examples
             if (gazeIn)
             {
                 // fade color towards selectColor until popTime has elapsed
+<<<<<<< HEAD
+=======
 
                 Debug.Log("hi");
+>>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
                 counter += Time.deltaTime;
                 meshRenderer.material.color = Color.Lerp(initialColor, selectColor, counter / popTime);
 
                 if (counter > popTime)
+<<<<<<< HEAD
+                {                  
+                    // Start pickup script
+                    //Debug.Log("Pickup");
+
+                    //first disable rotate script
+                    RotateMe = FindObjectOfType<rotateMe>();
+                    RotateMe.enabled = false;
+
+                    //start and initialize pickup of cube
+                    PickupMe = FindObjectOfType<PickupMe>();
+                    PickupMe.enabled = true;
+                    PickupMe.grabbed = false;
+                    PickupMe.PickupOrDrop();
+                    Reset();
+=======
                 {                  // Then pop cube.
                     myRb.AddForce(Vector3.up * 300 + Random.insideUnitSphere * .25f);
                     myRb.AddTorque(Random.insideUnitSphere * 10);
                     Reset();
 
+>>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
                 }
             }
         }
@@ -58,9 +87,16 @@ namespace A03Examples
         * **/
         public void GazeAndPop()
         {
+<<<<<<< HEAD
+
             counter = 0;
             gazeIn = true;
         }
+=======
+            counter = 0;
+            gazeIn = true;
+        }
+>>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
 
         /***
         * Reset

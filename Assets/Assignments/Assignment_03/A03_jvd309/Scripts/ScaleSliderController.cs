@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace A03Examples
+namespace jvd309
 {
     [RequireComponent(typeof(Slider))]
     public class ScaleSliderController : MonoBehaviour

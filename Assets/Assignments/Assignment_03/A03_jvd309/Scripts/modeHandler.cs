@@ -2,24 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace A03Examples{  
-    public class modeHandler : MonoBehaviour {
-        public bool isTranslating;
-        public PickupMe _PickupMe;
-        public RotateMe _RotateMe;
 
-    	// Use this for initialization
-    	void Start () {
-            isTranslating = true;
-            Debug.Log("DONE");
-    	}
-    	
-    	// Update is called once per frame
-    	void Update () {
-
-    	}
-        public void checkMode(){
+namespace jvd309
+{
+    public class modeHandler : MonoBehaviour
+    {
+        rotateMe RotateMe;
+        PickupMe PickupMe;
+        // Use this for initialization
+        void Start()
+        {
             
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            
+        }
+        public void CheckMode(){
+            //When the cube is clicked disable picking up of cube
+            PickupMe = FindObjectOfType<PickupMe>();
+            PickupMe.enabled = false;
+
+            //Start rotate script and initialize new values
+            RotateMe = FindObjectOfType<rotateMe>();
+            RotateMe.enabled = true;
+            RotateMe.Start();
+            RotateMe.RotateOrDrop();
+            RotateMe.Update();
         }
     }
 }

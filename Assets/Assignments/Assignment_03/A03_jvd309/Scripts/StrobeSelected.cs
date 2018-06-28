@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace A03Examples
+namespace jvd309
 {
     /***
      * StrobeSelected component causes object color to continuously
