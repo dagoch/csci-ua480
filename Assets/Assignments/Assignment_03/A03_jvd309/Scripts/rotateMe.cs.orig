@@ -1,23 +1,30 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace jvd309
 {
+<<<<<<< HEAD
+=======
+    /***
+     * PickupMe component allows user to select this object and 
+     * move it with their gaze
+     ******/
+>>>>>>> 377e586ad6491d9e6a8aa26321d9e2043dc155ad
     public class rotateMe : MonoBehaviour
     {
         public bool grabbed = false;  // have i been picked up, or not?
         Rigidbody myRb;
         StrobeSelected strobe;
         public DrawDownPointer downPointer;
-        
+
         Vector3 starting_pos;
         public float rot_speed;
-        
+
         rotateMe RotateMe;
         MeshRenderer meshRenderer;
         Color initialColor;
-        
+
         // Use this for initialization
         public void Start()
         {
@@ -27,7 +34,7 @@ namespace jvd309
             strobe = GetComponent<StrobeSelected>();
             starting_pos = transform.position;
         }
-        
+
         // Update is called once per frame
         public void Update()
         {
@@ -35,26 +42,26 @@ namespace jvd309
             {
                 strobe.trigger = true;
                 strobe.strobeColor = Color.blue; //how we know we're rotating
-                
+
                 starting_pos[1] = 2f;
                 transform.position = starting_pos; //hold cube in air
-                
+
                 transform.eulerAngles = transform.parent.eulerAngles * rot_speed; //rotate cube based on head movement
-                
+
                 myRb.isKinematic = true;
-                
+
             }
-            
+
             if (grabbed && (downPointer != null))
             {
                 downPointer.DrawLine(transform.position);
             }
-            
+
         }
-        
+
         /*
          * Repurposed PickupOrDrop
-         * Handle the event when the user clicks the button while
+         * Handle the event when the user clicks the button while 
          * gaze is on this object.  Toggle grabbed state.
          */
         public void RotateOrDrop()
@@ -66,7 +73,7 @@ namespace jvd309
                 myRb.isKinematic = true;  //.useGravity = false;
                 strobe.trigger = false;
                 if (downPointer != null)
-                downPointer.DontDraw();
+                    downPointer.DontDraw();
             }
             else
             {   // pick it up:
@@ -76,8 +83,8 @@ namespace jvd309
                 grabbed = true;
                 strobe.trigger = true;   // turn on color strobe so we know we have it
                 myRb.isKinematic = true; //  .useGravity = false;
-                
-                
+
+
             }
         }
     }
