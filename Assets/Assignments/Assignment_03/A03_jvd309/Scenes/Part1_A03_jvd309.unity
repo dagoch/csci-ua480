@@ -38,7 +38,11 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< HEAD
   m_IndirectSpecularColor: {r: 0.44657898, g: 0.496413, b: 0.5748175, a: 1}
+=======
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+>>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -125,9 +129,15 @@ GameObject:
   - component: {fileID: 393062815}
   - component: {fileID: 393062814}
   - component: {fileID: 393062818}
+<<<<<<< HEAD
   - component: {fileID: 393062820}
   - component: {fileID: 393062822}
   - component: {fileID: 393062823}
+=======
+  - component: {fileID: 393062819}
+  - component: {fileID: 393062820}
+  - component: {fileID: 393062821}
+>>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -220,7 +230,11 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
+<<<<<<< HEAD
         - m_Target: {fileID: 393062822}
+=======
+        - m_Target: {fileID: 393062819}
+>>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
           m_MethodName: PickupOrDrop
           m_Mode: 1
           m_Arguments:
@@ -234,6 +248,21 @@ MonoBehaviour:
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   delegates: []
+<<<<<<< HEAD
+=======
+--- !u!114 &393062819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 393062813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd9f9207146b4a61b7e705cf6c56da9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbed: 0
+>>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
 --- !u!54 &393062820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -249,6 +278,7 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
+<<<<<<< HEAD
 --- !u!114 &393062822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,6 +293,9 @@ MonoBehaviour:
   grabbed: 0
   downPointer: {fileID: 0}
 --- !u!114 &393062823
+=======
+--- !u!114 &393062821
+>>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -270,7 +303,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 393062813}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: b56ab4f83d09647adb54a530eb245047, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: e07a94ce4d4a848c5b14386123189059, type: 3}
+>>>>>>> 0bdfd6359edd452cf1a7a839f46b61c066d4750a
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: 0
