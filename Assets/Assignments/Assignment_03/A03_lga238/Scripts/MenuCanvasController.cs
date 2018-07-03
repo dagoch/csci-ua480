@@ -12,6 +12,7 @@ namespace lga238
 
         [HideInInspector]
         public GameObject ControllingObject;
+        public GameObject Cube;
 
         private Canvas _canvas;
         private float _distanceToCamera;
@@ -33,9 +34,12 @@ namespace lga238
         {
             Hide();
 
+           Cube = GameObject.Find("ControlCube");
+
             //Get the initial distance between the canvas and the camera, and project it on the camera's forward direction
             Vector3 dis = Camera.main.transform.position - transform.position;
             _distanceToCamera = Vector3.Project(dis, Camera.main.transform.forward).magnitude;
+            Debug.Log(Cube.transform);
         }
 
         private void SetChildrenActive(bool isActive)
@@ -51,6 +55,7 @@ namespace lga238
             if (_isShowing)
             {
                 Hide();
+                Cube.transform.parent = Camera.main.transform;
             }
             else{
                 ControllingObject = sender;
@@ -58,6 +63,7 @@ namespace lga238
                 transform.forward = Camera.main.transform.forward;
                 SetChildrenActive(true);
                 _isShowing = true;
+                Cube.transform.parent = null;
             }
         }
 
