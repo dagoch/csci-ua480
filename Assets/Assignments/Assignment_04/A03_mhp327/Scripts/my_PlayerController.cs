@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//This unity forum page helped me
+//https://answers.unity.com/questions/29751/gradually-moving-an-object-up-to-speed-rather-then.html
+
 namespace mhp327_A04
 {
     public class my_PlayerController : MonoBehaviour
