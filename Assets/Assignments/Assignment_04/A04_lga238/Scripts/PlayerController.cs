@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace A04Examples
+namespace lga238
 {
     public class PlayerController : MonoBehaviour
     {
