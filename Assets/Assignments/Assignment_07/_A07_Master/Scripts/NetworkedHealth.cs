@@ -27,7 +27,7 @@ namespace A07Examples
             spawnPosition = transform.position;
         }
 
-
+        // This is called from BulletController.
         public void TakeDamage(int amount)
         {
             if (!isServer)
