@@ -15,16 +15,13 @@ namespace A07Examples
         [SyncVar]
         public int buttonCount = 0;
 
-        public Text LastIdText;
-        public Text ScorebdText;
-
+        // SyncLists are SyncVars for lists.  There are several different types.
+        // They do not need a SyncVar attribute tag.
         public SyncListInt players = new SyncListInt();
 
-
-        // Use this for initialization
-        void Start()
-        {
-        }
+        // local UI text fields to display data
+        public Text LastIdText;
+        public Text ScorebdText;
 
 
         public override void OnStartServer()
@@ -40,6 +37,8 @@ namespace A07Examples
         // This runs on all clients
         void Update()
         {
+            // Update the information display
+
             LastIdText.text = "Last Id: "+lastPlayerId.ToString();
 
             // Display scores for each player
@@ -50,14 +49,17 @@ namespace A07Examples
             ScorebdText.text = board;
         }
 
+        // Increment the global count of button clicks, and also the score for the given player
+        // this is called from a Command by the player, so it runs as server
         public void PressButton(int playerId) {
             buttonCount++;
             Debug.Log("Button pressed, count = " + buttonCount);
+            // increment count for the given player
             players[playerId]++;
-
         }
 
         // this increments lastPlayerId and adds an entry in the scoreboard array
+        // this is called from a Command by the player, so it runs as server
         public void AddNewPlayer() {
             lastPlayerId++;
             players.Add(0);

@@ -12,6 +12,11 @@ namespace A07Examples
         public float rotSpeed = 2.0f;
         public float transSpeed = 0.5f;
 
+        public Text idText;
+
+        public GameManager gameManager;
+
+
         [SyncVar(hook = "OnPlayerIdChange")]
         public int playerId;
 
@@ -22,26 +27,17 @@ namespace A07Examples
             playerId = id;
             Debug.Log("Player id set on player " + playerId );
 
+            //and now set my text label so I can show my id
             idText.text = playerId.ToString();
         }
 
-
-        public Text idText;
-
-
-        public GameManager gameManager;
-
-        // Use this for initialization
-        void Start()
-        {
-
-        }
 
         public override void OnStartServer()
         {
             base.OnStartServer();
             Debug.Log("Get GameManager on Server");
 
+            // Wait until the Game Manager object spawns and then grab a handle to it
             while (gameManager == null)
             {
                 GameObject temp = GameObject.Find("Game Manager");
@@ -67,15 +63,18 @@ namespace A07Examples
         public override void OnStartLocalPlayer()
         {
             GetComponent<Renderer>().material.color = Color.blue;
+
             Debug.Log("Get GameManager on Player");
+            // Wait until the Game Manager object spawns and then grab a handle to it
             while (gameManager == null)
             {
                 GameObject temp = GameObject.Find("Game Manager");
                 if (temp != null)
                     gameManager = temp.GetComponent<GameManager>();
             }
+
             // Tell server a new player has started
-                CmdIncrPlayerId();
+            CmdIncrPlayerId();
         }
 
         // This Increments the player count on the server
@@ -95,10 +94,11 @@ namespace A07Examples
         [ClientRpc]  // called on the Server, but invoked on the Clients
         void RpcSetId(int id)
         {
-                Debug.Log("Player got rpcsetid = " + id);
-                playerId = id;
-                idText.text = playerId.ToString();
+            Debug.Log("Player got rpcsetid = " + id);
+            playerId = id;
 
+            // then I need to set my local text label to show the id
+            idText.text = playerId.ToString();
         }
 
 
@@ -106,27 +106,29 @@ namespace A07Examples
         void Update()
         {
 
-//            idText.text = playerId.ToString();
-
             if (!isLocalPlayer) {
                 return;
             }
 
-
-
+            // This code is only run on the Client that controls this Player object
+            // So we can get input from the user for this player
             float moveX = Input.GetAxis("Horizontal");
             float moveZ = Input.GetAxis("Vertical");
 
             transform.Rotate(transform.up, moveX * rotSpeed);
             transform.Translate(0, 0, moveZ * transSpeed);
 
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonUp(0)) // || Input.GetMouseButton(0)
+            // Another piece of data to share: mouse clicks or spacebar presses
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonUp(0)) 
             {
                 CmdCountMe();
             }
 
         }
 
+        // This is run on the server, and calls a method on the GameManager.  
+        // That method on GameManager is then still being run by the server -- because
+        // that's the only place this call is executed.
         [Command]
         void CmdCountMe() {
             gameManager.PressButton(playerId);
