@@ -11,6 +11,9 @@ namespace A07Examples
         public Transform cameraContainerTransform;
         public Transform visorTransform;
 
+        public float rotSpeed = 2.0f;
+        public float transSpeed = 0.5f;
+
         public float ThresholdAngle
         {
             get
@@ -36,8 +39,14 @@ namespace A07Examples
 
         private float _thresholdMagnitude;
 
+        public bool standalone_osx = false;
 
-
+        private void Start()
+        {
+#if UNITY_STANDALONE_OSX
+            standalone_osx = true;
+#endif
+        }
         public override void OnStartLocalPlayer()
         {
             GetComponent<Renderer>().material.color = Color.blue;
@@ -57,42 +66,52 @@ namespace A07Examples
                 return;
             }
 
-            isWalking = false;
-            float yOffset = transform.position.y;
+            // This code is only run on the Client that controls this Player object
+            // So we can get input from the user for this player
 
-            Vector3 tilt = cameraTransform.up;
-            tilt.y = 0;
-            if (tilt.magnitude > _thresholdMagnitude)
+            if (standalone_osx)
             {
-                isWalking = true;
+                // this is for testing in a standalone build on the desktop (on mac)
+                float moveX = Input.GetAxis("Horizontal");
+                float moveZ = Input.GetAxis("Vertical");
 
-                direction = new Vector3(cameraTransform.forward.x, 0, cameraTransform.forward.z).normalized * TiltingSpeed * Time.deltaTime;
-                Quaternion rotation = Quaternion.Euler(new Vector3(0, -transform.rotation.eulerAngles.y, 0));
-                transform.Translate(rotation * direction);
+                // only turns left or right: doesn't tilt up & down
+                transform.Rotate(transform.up, moveX * rotSpeed);
+                transform.Translate(0, 0, moveZ * transSpeed);
+                cameraContainerTransform.eulerAngles = transform.eulerAngles;
 
-                transform.position = new Vector3(transform.position.x, yOffset, transform.position.z);
+            }
+            else
+            {
+                isWalking = false;
+                float yOffset = transform.position.y;
+
+                Vector3 tilt = cameraTransform.up;
+                tilt.y = 0;
+                if (tilt.magnitude > _thresholdMagnitude)
+                {
+                    isWalking = true;
+
+                    direction = new Vector3(cameraTransform.forward.x, 0, cameraTransform.forward.z).normalized * TiltingSpeed * Time.deltaTime;
+                    Quaternion rotation = Quaternion.Euler(new Vector3(0, -transform.rotation.eulerAngles.y, 0));
+                    transform.Translate(rotation * direction);
+
+                    transform.position = new Vector3(transform.position.x, yOffset, transform.position.z);
+                }
+
+                // rotate the player to match the camera's rotation (controlled by GoogleVR)
+                Vector3 yrot = cameraTransform.rotation.eulerAngles;
+                // only rotate around y axis
+                yrot.x = 0;
+                yrot.z = 0;
+                transform.eulerAngles = yrot;
+                //        transform.rotation = cameraTransform.rotation;
             }
 
-            // rotate the player to match the camera's rotation (controlled by GoogleVR)
-            Vector3 yrot = cameraTransform.rotation.eulerAngles;
-            // only rotate around y axis
-            yrot.x = 0;
-            yrot.z = 0;
-            transform.eulerAngles = yrot;
-            //        transform.rotation = cameraTransform.rotation;
-
-
-            // move the player according to input
-            var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
-            transform.Translate(0, 0, z);
 
             // move the camera to match the player's position
             cameraContainerTransform.position = visorTransform.position;
 
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonUp(0)) // || Input.GetMouseButton(0)
-            {
-                CmdFire();
-            }
         }
 
         // This [Command] code is called on the Client …
@@ -115,5 +134,7 @@ namespace A07Examples
             // Destroy the bullet after 2 seconds
             Destroy(bullet, 2.0f);
         }
+
+
     }
 }
