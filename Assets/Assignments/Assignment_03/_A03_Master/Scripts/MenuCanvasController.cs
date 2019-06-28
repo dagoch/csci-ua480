@@ -13,6 +13,7 @@ namespace A03Examples
         [HideInInspector]
         public GameObject ControllingObject;
 
+        public GameObject cubey;
         private Canvas _canvas;
         private float _distanceToCamera;
         private bool _isShowing;
@@ -31,6 +32,8 @@ namespace A03Examples
 
         private void Start()
         {
+            cubey = GameObject.Find("Cube");
+
             Hide();
 
             //Get the initial distance between the canvas and the camera, and project it on the camera's forward direction
@@ -51,13 +54,15 @@ namespace A03Examples
             if (_isShowing)
             {
                 Hide();
+                cubey.transform.parent = null;
             }
 
             ControllingObject = sender;
-            transform.position = Camera.main.transform.position + Camera.main.transform.forward * _distanceToCamera;
+            transform.position = new Vector3(0.08f,1.6f,-3.38f);
             transform.forward = Camera.main.transform.forward;
             SetChildrenActive(true);
             _isShowing = true;
+            //cubey.transform.parent = Camera.main.transform;
         }
 
         public void Hide()
